@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 18:51:51 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/20 21:05:41 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/20 22:47:05 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ t_fvec			**char_tab_to_fvec_tab(char *str, size_t row)
 	new = (t_fvec **)malloc((get_len(str) + 1) * sizeof(t_fvec *));
 	while (*str)
 	{
+		str++;
 	}
 	(void)str;
 	return (NULL);
