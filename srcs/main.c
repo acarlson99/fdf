@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 14:10:38 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/21 13:02:04 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/21 13:04:28 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ p_type %d\n", info->windowwidth, info->windowheight, info->exec_name, info->file
 		col = 0;
 		while (a->v[col])
 		{
-			printf("row: %zu col: %zu x: %f y: %f z: %f\n", row, col,\
-					a->v[col]->v->x, a->v[col]->v->y, a->v[col]->v->z);
+			printf("row: %zu col: %zu x: %f y: %f z: %f color: %X\n", row, col,\
+				   a->v[col]->v->x, a->v[col]->v->y, a->v[col]->v->z, a->v[col]->color);
 			col++;
 		}
 		a = a->next;

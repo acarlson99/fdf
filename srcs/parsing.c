@@ -6,11 +6,39 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 18:51:51 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/21 13:02:16 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/21 13:39:07 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static int		ft_other_atoibase(const char *str, int base)
+{
+	int	n;
+	int	sign;
+
+	n = 0;
+	sign = 1;
+	while ((*str >= 9 && *str <= 13) || *str == 32)
+		str++;
+	if (*str == '+' || *str == '-')
+	{
+		if (*str == '-')
+			sign = -1;
+		str++;
+	}
+	while (*str)
+	{
+		if (*str >= '0' && *str <= (MIN('0' + base - 1, '9')))
+			n = n * base + *str - '0';
+		else if (*str >= 'A' && *str <= ('A' + base - 11))
+			n = n * base + *str - 'A' + 10;
+		else
+			break ;
+		str++;
+	}
+	return (n * sign);
+}
 
 size_t			get_len(char *str)
 {
@@ -41,20 +69,20 @@ t_fvec			**char_tab_to_fvec_tab(char *str, size_t row)
 						get_len(str) + 1) * sizeof(t_fvec *))));
 	while (*str)
 	{
-		RET_IF(!ISDIGIT(*str), NULL);
+		RET_IF(!(ISDIGIT(*str) || *str == '-'), NULL);
 		color = 0xFFFFFF;
 		z = ft_atoi(str);
-		while (ISDIGIT(*str))
+		while (ISDIGIT(*str) || *str == '-')
 			str++;
 		if (*str == ',')
 		{
 			if (*(str + 1) == '0' && *(str + 2) == 'x')
 				str += 3;
-			color = ft_atoibase(str, 16);
-			while (ISDIGIT(*str))
+			color = ft_other_atoibase(str, 16);
+			while (ISDIGIT(*str) || (*str >= 'A' && *str <= 'F'))
 				str++;
 		}
-		else
+		if (*str == ' ')
 			str++;
 		new[col] = fvec_new(ft_vectnew((double)col, (double)row, (double)z), color);
 		col++;
@@ -77,7 +105,10 @@ int				parse_file(t_fdf *info)
 	{
 		fvec_tab = char_tab_to_fvec_tab(line, row);
 		if (!fvec_tab)
+		{
+			printf("%s\n", line);
 			return (2);
+		}
 		ft_flstadd_tail(&(info->vals), ft_flstnew(fvec_tab));
 		free(line);
 		row++;
