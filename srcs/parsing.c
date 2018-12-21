@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 18:51:51 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/21 13:39:07 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/21 13:39:36 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ size_t			get_len(char *str)
 	return (len);
 }
 
-t_fvec			**char_tab_to_fvec_tab(char *str, size_t row)
+t_fvec			**char_tab_to_fvec_tab(char *str, size_t row)	// TODO: This still leaks on error
 {
 	t_fvec		**new;
 	size_t		col;
