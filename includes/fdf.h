@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 18:34:13 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/20 19:02:01 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/21 13:00:30 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <math.h>
 # include "mlx.h"
 # include "libft.h"
+
+#include <stdio.h>	// TODO: sweet god delete this
 
 # define PAR 0
 # define ISO 1
@@ -68,12 +70,15 @@ typedef struct	s_fdf
 }				t_fdf;
 
 t_fdf	*init_struct(void);
-void	free_struct(t_fdf **info);
 int		fill_struct(t_fdf *info, int argc, char **argv);
 int		parse_file(t_fdf *info);
 
 void	draw_line_bresenham(t_fdf *info, t_vect3 *v, t_vect3 *w, int color);
 
 void	ohfuck(t_fdf *info, int code);
+t_fvec	*fvec_new(t_vect3 *v, int color);
+
+t_flist	*ft_flstnew(t_fvec **v);
+void		ft_flstadd_tail(t_flist **alst, t_flist *new);
 
 #endif

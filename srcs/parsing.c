@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 18:51:51 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/20 22:47:05 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/21 13:02:16 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,34 @@ t_fvec			**char_tab_to_fvec_tab(char *str, size_t row)
 {
 	t_fvec		**new;
 	size_t		col;
+	int			color;
+	double		z;
 
 	col = 0;
-	ft_printf("Len of %d: %zu\n", row, get_len(str));
-	new = (t_fvec **)malloc((get_len(str) + 1) * sizeof(t_fvec *));
+	NULL_CHECK(!(new = (t_fvec **)malloc((\
+						get_len(str) + 1) * sizeof(t_fvec *))));
 	while (*str)
 	{
-		str++;
+		RET_IF(!ISDIGIT(*str), NULL);
+		color = 0xFFFFFF;
+		z = ft_atoi(str);
+		while (ISDIGIT(*str))
+			str++;
+		if (*str == ',')
+		{
+			if (*(str + 1) == '0' && *(str + 2) == 'x')
+				str += 3;
+			color = ft_atoibase(str, 16);
+			while (ISDIGIT(*str))
+				str++;
+		}
+		else
+			str++;
+		new[col] = fvec_new(ft_vectnew((double)col, (double)row, (double)z), color);
+		col++;
 	}
-	(void)str;
-	return (NULL);
+	new[col] = NULL;
+	return (new);
 }
 
 int				parse_file(t_fdf *info)
@@ -58,8 +76,11 @@ int				parse_file(t_fdf *info)
 	while ((n = get_next_line(fd, &line)) > 0)
 	{
 		fvec_tab = char_tab_to_fvec_tab(line, row);
-		ft_printf("%s\n", line);
+		if (!fvec_tab)
+			return (2);
+		ft_flstadd_tail(&(info->vals), ft_flstnew(fvec_tab));
 		free(line);
+		row++;
 	}
 	RET_IF(n == -1, 1);
 	info->windowwidth = 600;

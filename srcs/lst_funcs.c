@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 14:34:48 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/20 17:17:08 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/21 12:41:03 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ void		ft_flstadd_tail(t_flist **alst, t_flist *new)
 
 	tmp = *alst;
 	head = tmp;
+	if (!tmp)
+	{
+		*alst = new;
+		return ;
+	}
 	while (tmp->next)
 		tmp = tmp->next;
 	tmp->next = new;

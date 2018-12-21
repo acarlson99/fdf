@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 14:10:38 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/19 18:57:10 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/21 13:02:04 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,21 @@ windowheight %d\n\
 exec_name %s\n\
 filename %s\n\
 p_type %d\n", info->windowwidth, info->windowheight, info->exec_name, info->filename, info->p_type);
+	t_flist		*a = info->vals;
+	size_t		row = 0;
+	size_t		col = 0;
+	while (a)
+	{
+		col = 0;
+		while (a->v[col])
+		{
+			printf("row: %zu col: %zu x: %f y: %f z: %f\n", row, col,\
+					a->v[col]->v->x, a->v[col]->v->y, a->v[col]->v->z);
+			col++;
+		}
+		a = a->next;
+		row++;
+	}
 }
 
 void	ohfuck(t_fdf *info, int code)

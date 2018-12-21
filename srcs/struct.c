@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 18:51:18 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/20 17:19:52 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/21 12:17:30 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ t_fdf	*init_struct(void)
 
 int		fill_struct(t_fdf *info, int argc, char **argv)
 {
+	int		n;
+	
 	info->exec_name = ft_strdup(argv[0]);
 	if (argc == 3)
 	{
@@ -57,7 +59,9 @@ int		fill_struct(t_fdf *info, int argc, char **argv)
 	if (argc < 2 || argc > 3)
 		return (USG_ERR);
 	info->filename = ft_strdup(argv[1]);
-	RET_IF(parse_file(info), FILE_ERR);
+	n = parse_file(info);
+	RET_IF(n == 1, FILE_ERR);
+	RET_IF(n == 2, -1);
 	RET_IF(!(info->mlx_ptr = mlx_init()), 3);
 	RET_IF(!(info->win_ptr = mlx_new_window(info->mlx_ptr, info->windowwidth,\
 			info->windowheight, ft_strrchr(info->exec_name, '/') + 1)), 4);
