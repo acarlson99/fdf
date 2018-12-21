@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 18:51:18 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/21 12:17:30 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/21 14:36:13 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_fdf	*init_struct(void)
 int		fill_struct(t_fdf *info, int argc, char **argv)
 {
 	int		n;
-	
+
 	info->exec_name = ft_strdup(argv[0]);
 	if (argc == 3)
 	{

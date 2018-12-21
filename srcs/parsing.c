@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 18:51:51 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/21 13:39:36 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/21 14:54:35 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,10 @@ size_t			get_len(char *str)
 	return (len);
 }
 
+#define DC (double)col
+#define DR (double)row
+#define DZ (double)z
+
 t_fvec			**char_tab_to_fvec_tab(char *str, size_t row)	// TODO: This still leaks on error
 {
 	t_fvec		**new;
@@ -84,7 +88,7 @@ t_fvec			**char_tab_to_fvec_tab(char *str, size_t row)	// TODO: This still leaks
 		}
 		if (*str == ' ')
 			str++;
-		new[col] = fvec_new(ft_vectnew((double)col, (double)row, (double)z), color);
+		new[col] = fvec_new(ft_vectnew(DC, DR, DZ), color);
 		col++;
 	}
 	new[col] = NULL;

@@ -6,13 +6,13 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 14:34:48 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/21 12:41:03 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/21 14:47:29 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_flist	*ft_flstnew(t_fvec **v)
+t_flist		*ft_flstnew(t_fvec **v)
 {
 	t_flist			*new;
 
