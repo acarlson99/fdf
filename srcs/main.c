@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 14:10:38 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/21 21:49:04 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/21 22:16:33 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	convert_iso(t_vect3 *v, int z)
 	iso(&v->x, &v->y, z);
 }
 
-int		main(int argc, char **argv)
+int		main(int argc, char **argv)	// FIXME: parsing error on test_maps/elem.fdf
 {
 	t_fdf	*info;
 	int		code;
