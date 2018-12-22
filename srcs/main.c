@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 14:10:38 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/21 22:16:33 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/21 22:44:05 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,23 +63,7 @@ int		deal_key(int key, void *param)
 	return (0);
 }
 
-void	iso(double *x, double *y, int z)
-{
-	int		prev_x;
-	int		prev_y;
-
-	prev_x = *x;
-	prev_y = *y;
-	*x = 200 + (prev_x - prev_y) * cos(0.523599);
-	*y = -z + (prev_x + prev_y) * sin(0.523599);
-}
-
-void	convert_iso(t_vect3 *v, int z)
-{
-	iso(&v->x, &v->y, z);
-}
-
-int		main(int argc, char **argv)	// FIXME: parsing error on test_maps/elem.fdf
+int		main(int argc, char **argv)
 {
 	t_fdf	*info;
 	int		code;

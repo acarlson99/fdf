@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 18:51:18 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/21 19:37:27 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/21 22:45:18 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,6 @@ int		fill_struct(t_fdf *info, int argc, char **argv)
 	RET_IF(n, n);
 	RET_IF(!(info->mlx_ptr = mlx_init()), MLX_ERR);
 	RET_IF(!(info->win_ptr = mlx_new_window(info->mlx_ptr, info->windowwidth,\
-			info->windowheight, ft_strrchr(info->exec_name, '/') + 1)), WIN_ERR);
+			info->windowheight, ft_strrchr(info->exec_name, '/') + 1)), WIN_ERR);	// TODO: Scale windowwidth and windowheight with size of map
 	return (0);
 }

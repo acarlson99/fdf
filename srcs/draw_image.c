@@ -6,11 +6,16 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/21 19:39:33 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/21 22:12:55 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/21 22:46:08 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void		draw_line_color_gradient(t_fdf *info, t_fvec *v, t_fvec *w)	// TODO: implement
+{
+	draw_line_bresenham(info, v->v, w->v, v->color);
+}
 
 void		draw_image(t_fdf *info)
 {
@@ -24,9 +29,9 @@ void		draw_image(t_fdf *info)
 		while (ptr->v[col])
 		{
 			if (ptr->v[col] && ptr->v[col + 1])
-				draw_line_bresenham(info, ptr->v[col]->v, ptr->v[col + 1]->v, WHITE);
+				draw_line_color_gradient(info, ptr->v[col], ptr->v[col + 1]);
 			if (ptr->next)
-				draw_line_bresenham(info, ptr->v[col]->v, ptr->next->v[col]->v, WHITE);
+				draw_line_color_gradient(info, ptr->v[col], ptr->next->v[col]);
 			col++;
 		}
 		ptr = ptr->next;
