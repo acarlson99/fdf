@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 18:51:51 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/21 22:15:12 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/21 22:16:58 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ size_t			get_len(char *str)
 #define DR (double)row
 #define DZ (double)z
 
-int				char_tab_to_fvec_tab(t_fvec **new, char *str, size_t row)	// TODO: This still leaks on error
+int				char_tab_to_fvec_tab(t_fvec **new, char *str, size_t row)
 {
 	size_t		col;
 	int			color;
