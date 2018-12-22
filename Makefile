@@ -6,7 +6,7 @@
 #    By: acarlson <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/15 14:08:57 by acarlson          #+#    #+#              #
-#    Updated: 2018/12/20 17:12:08 by acarlson         ###   ########.fr        #
+#    Updated: 2018/12/21 19:39:44 by acarlson         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -17,7 +17,7 @@ SRCS = srcs/
 OBJDIR = .obj/
 INCLUDES = -I includes/ -I libft/includes/ -I minilibx_macos/
 FRAMEWORKS = -framework OpenGL -framework AppKit
-FILES = main parsing line_drawing struct lst_funcs
+FILES = main parsing line_drawing struct lst_funcs draw_image
 CFILES = $(addsuffix .c, $(FILES))
 OFILES = $(addprefix $(OBJDIR), $(addsuffix .o, $(FILES)))
 LIBS = -L libft/ -lft -L minilibx_macos/ -lmlx

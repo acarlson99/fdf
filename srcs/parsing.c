@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 18:51:51 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/21 14:54:35 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/21 19:36:29 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,19 +61,17 @@ size_t			get_len(char *str)
 #define DR (double)row
 #define DZ (double)z
 
-t_fvec			**char_tab_to_fvec_tab(char *str, size_t row)	// TODO: This still leaks on error
+int				char_tab_to_fvec_tab(t_fvec **new, char *str, size_t row)	// TODO: This still leaks on error
 {
-	t_fvec		**new;
 	size_t		col;
 	int			color;
 	double		z;
 
+	RET_IF(!new, 1);
 	col = 0;
-	NULL_CHECK(!(new = (t_fvec **)malloc((\
-						get_len(str) + 1) * sizeof(t_fvec *))));
 	while (*str)
 	{
-		RET_IF(!(ISDIGIT(*str) || *str == '-'), NULL);
+		RET_IF(!(ISDIGIT(*str) || *str == '-'), 1);
 		color = 0xFFFFFF;
 		z = ft_atoi(str);
 		while (ISDIGIT(*str) || *str == '-')
@@ -92,7 +90,7 @@ t_fvec			**char_tab_to_fvec_tab(char *str, size_t row)	// TODO: This still leaks
 		col++;
 	}
 	new[col] = NULL;
-	return (new);
+	return (0);
 }
 
 int				parse_file(t_fdf *info)
@@ -107,17 +105,17 @@ int				parse_file(t_fdf *info)
 	row = 0;
 	while ((n = get_next_line(fd, &line)) > 0)
 	{
-		fvec_tab = char_tab_to_fvec_tab(line, row);
-		if (!fvec_tab)
-		{
-			printf("%s\n", line);
-			return (2);
-		}
+		RET_IF(row != 0 && get_len(line) != info->vals_len, PARS_ERR);
+		if (row == 0)
+			info->vals_len = get_len(line);
+		RET_IF(!(fvec_tab = (t_fvec **)malloc((info->vals_len + 1)\
+										* sizeof(t_fvec *))), PARS_ERR);
+		char_tab_to_fvec_tab(fvec_tab, line, row);
 		ft_flstadd_tail(&(info->vals), ft_flstnew(fvec_tab));
 		free(line);
 		row++;
 	}
-	RET_IF(n == -1, 1);
+	RET_IF(n == -1, FILE_ERR);
 	info->windowwidth = 600;
 	info->windowheight = 600;
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 18:34:13 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/21 17:03:29 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/21 19:42:08 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@
 
 # define USG_ERR 1
 # define FILE_ERR 2
+# define PARS_ERR 3
+# define MLX_ERR 4
+# define WIN_ERR 5
 
-#if 0
 # define WHITE 0xFFFFFF
 # define BLUE  0x0000FF
 # define RED   0xFF0000
@@ -35,7 +37,6 @@
 # define C1    0xFFFF00
 # define C2    0xFF00FF
 # define C3    0x00FFFF
-#endif
 
 /*
 ** x = x position
@@ -44,12 +45,10 @@
 ** h = windowheight
 */
 
-# define COLOR(x, y, w, h) ((x * 255) / w + ((((w - x) * 255) / w) << 16) + (((y * 255) / h) << 8))
-
-# define RED(x, y, w, h) (((w - x) * 255) / w)
-# define GRN(x, y, w, h) ((y * 255) / h)
-# define BLU(x, y, w, h) ((x * 255) / w)
-# define RGB(x,y,w,h) ((RED(x,y,w,h) << 16) + (GRN(x,y,w,h) << 8) + BLU(x,y,w,h))
+# define R(x, y, w, h) (((w - x) * 255) / w)
+# define G(x, y, w, h) ((y * 255) / h)
+# define B(x, y, w, h) ((x * 255) / w)
+# define RGB(x,y,w,h) ((R(x,y,w,h) << 16) + (G(x,y,w,h) << 8) + B(x,y,w,h))
 
 typedef struct	s_fvec
 {
@@ -73,19 +72,22 @@ typedef struct	s_fdf
 	char			*exec_name;
 	char			*filename;
 	t_flist			*vals;
+	size_t			vals_len;
 	unsigned char	p_type;
 }				t_fdf;
 
-t_fdf	*init_struct(void);
-int		fill_struct(t_fdf *info, int argc, char **argv);
-int		parse_file(t_fdf *info);
+t_fdf		*init_struct(void);
+int			fill_struct(t_fdf *info, int argc, char **argv);
+int			parse_file(t_fdf *info);
 
-void	draw_line_bresenham(t_fdf *info, t_vect3 *v, t_vect3 *w, int color);
+void		draw_line_bresenham(t_fdf *info, t_vect3 *v, t_vect3 *w, int color);
 
-void	ohfuck(t_fdf *info, int code);
-t_fvec	*fvec_new(t_vect3 *v, int color);
+void		ohfuck(t_fdf *info, int code);
+t_fvec		*fvec_new(t_vect3 *v, int color);
 
-t_flist	*ft_flstnew(t_fvec **v);
+t_flist		*ft_flstnew(t_fvec **v);
 void		ft_flstadd_tail(t_flist **alst, t_flist *new);
+
+void		draw_image(t_fdf *info);
 
 #endif
