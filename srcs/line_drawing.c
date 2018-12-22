@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 15:01:26 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/19 16:02:53 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/21 22:06:47 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void			draw_line_bresenham(t_fdf *info, t_vect3 *v, t_vect3 *w,\
 	double	d_x;
 	double	d_y;
 
-	RET_NONE(!info || !info->mlx_ptr || !info->win_ptr);
+	RET_NONE(!info || !info->mlx_ptr || !info->win_ptr || !v || !w);
 	d_x = w->x - v->x;
 	d_y = w->y - v->y;
 	if (v->x < w->x && d_x >= d_y)
