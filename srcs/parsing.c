@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 18:51:51 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/21 19:36:29 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/21 21:50:02 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,19 +78,23 @@ int				char_tab_to_fvec_tab(t_fvec **new, char *str, size_t row)	// TODO: This s
 			str++;
 		if (*str == ',')
 		{
-			if (*(str + 1) == '0' && *(str + 2) == 'x')
-				str += 3;
-			color = ft_other_atoibase(str, 16);
-			while (ISDIGIT(*str) || (*str >= 'A' && *str <= 'F'))
-				str++;
+			RET_IF(*(str + 1) != '0' || *(str + 2) != 'x', PARS_ERR);
+			ELSE_DO(str += 3);
+			color = ft_other_atoibase(str, 16) - 0xA;
+			WHILE_DO(ISDIGIT(*str) || (*str >= 'A' && *str <= 'F'), str++);
 		}
-		if (*str == ' ')
-			str++;
+		DO_IF(*str == ' ', str++);
 		new[col] = fvec_new(ft_vectnew(DC, DR, DZ), color);
 		col++;
 	}
 	new[col] = NULL;
 	return (0);
+}
+
+int				free_line(char **line, int code)
+{
+	free(*line);
+	return (code);
 }
 
 int				parse_file(t_fdf *info)
@@ -105,12 +109,12 @@ int				parse_file(t_fdf *info)
 	row = 0;
 	while ((n = get_next_line(fd, &line)) > 0)
 	{
-		RET_IF(row != 0 && get_len(line) != info->vals_len, PARS_ERR);
-		if (row == 0)
-			info->vals_len = get_len(line);
+		RET_IF(row != 0 && get_len(line) != info->vals_len,\
+				free_line(&line, PARS_ERR));
+		info->vals_len = row == 0 ? get_len(line) : info->vals_len;
 		RET_IF(!(fvec_tab = (t_fvec **)malloc((info->vals_len + 1)\
 										* sizeof(t_fvec *))), PARS_ERR);
-		char_tab_to_fvec_tab(fvec_tab, line, row);
+		RET_IF(char_tab_to_fvec_tab(fvec_tab, line, row), PARS_ERR);
 		ft_flstadd_tail(&(info->vals), ft_flstnew(fvec_tab));
 		free(line);
 		row++;

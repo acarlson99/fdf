@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 14:10:38 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/21 19:53:08 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/21 21:49:04 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void	ohfuck(t_fdf *info, int code)
 		ft_printf("unable to create window\n");
 	else if (code == 5)
 		ft_printf("unable to create window\n");
-	while (1);
 	exit(1);
 }
 
@@ -89,7 +88,7 @@ int		main(int argc, char **argv)
 	code = fill_struct(info, argc, argv);
 	if (code)
 		ohfuck(info, code);
-	print_struct(info);
+	print_struct(info);	// TODO: remove
 	if (!info->mlx_ptr)
 		ohfuck(info, 3);
 	else if (!info->win_ptr)
