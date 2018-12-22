@@ -6,7 +6,7 @@
 #    By: acarlson <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/11 14:45:59 by acarlson          #+#    #+#              #
-#    Updated: 2018/12/18 14:23:00 by acarlson         ###   ########.fr        #
+#    Updated: 2018/12/21 17:11:56 by acarlson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,6 @@ all: $(NAME)
 
 $(NAME): $(OBJDIR) $(OFILES)
 	@ar -rcs $@ $(OFILES)
-	@ranlib $@
 	@echo "  $(CL_WHITE)+ libft : Compiled $(CL_GREEN)$@$(CL_WHITE)"
 
 clean:

@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 14:10:38 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/21 13:04:28 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/21 16:54:04 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,22 +65,37 @@ int		main(int argc, char **argv)
 {
 	t_fdf	*info;
 	int		code;
-	t_vect3	*v1 = ft_vectnew(100, 50, 5);
-	t_vect3 *w1 = ft_vectnew(100, 150, 5);
-	t_vect3 *v2 = ft_vectnew(150, 250, 5);
-	t_vect3 *w2 = ft_vectnew(250, 250, 5);
+	/* t_vect3	*v1 = ft_vectnew(100, 50, 5); */
+	/* t_vect3 *w1 = ft_vectnew(100, 150, 5); */
+	/* t_vect3 *v2 = ft_vectnew(150, 250, 5); */
+	/* t_vect3 *w2 = ft_vectnew(250, 250, 5); */
 
 	info = init_struct();
 	code = fill_struct(info, argc, argv);
 	if (code)
 		ohfuck(info, code);
 	print_struct(info);
-	draw_line_bresenham(info, w1, v1, WHITE);
-	draw_line_bresenham(info, v2, w2, GREEN);
 	if (!info->mlx_ptr)
 		ohfuck(info, 3);
 	else if (!info->win_ptr)
 		ohfuck(info, 4);
+	for (size_t y = 0; y < info->windowheight; y++)
+	{
+		for (size_t x = 0; x < info->windowwidth; x++)
+		{
+			mlx_pixel_put(info->mlx_ptr, info->win_ptr, x, y, RGB(x, y, info->windowwidth, info->windowheight));
+		}
+	}
+
+	void	*other_win;
+	other_win = mlx_new_window(info->mlx_ptr, info->windowwidth, info->windowheight, "Yeet");
+	for (size_t y = 0; y < info->windowheight; y++)
+	{
+		for (size_t x = 0; x < info->windowwidth; x++)
+		{
+			mlx_pixel_put(info->mlx_ptr, other_win, x, y, COLOR(x, y, info->windowwidth, info->windowheight));
+		}
+	}
 	mlx_key_hook(info->win_ptr, deal_key, (void *)0);
 	mlx_loop(info->mlx_ptr);
 }

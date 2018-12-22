@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 18:34:13 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/21 13:00:30 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/21 17:03:29 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define USG_ERR 1
 # define FILE_ERR 2
 
+#if 0
 # define WHITE 0xFFFFFF
 # define BLUE  0x0000FF
 # define RED   0xFF0000
@@ -34,6 +35,7 @@
 # define C1    0xFFFF00
 # define C2    0xFF00FF
 # define C3    0x00FFFF
+#endif
 
 /*
 ** x = x position
@@ -44,7 +46,12 @@
 
 # define COLOR(x, y, w, h) ((x * 255) / w + ((((w - x) * 255) / w) << 16) + (((y * 255) / h) << 8))
 
-typedef struct s_fvec
+# define RED(x, y, w, h) (((w - x) * 255) / w)
+# define GRN(x, y, w, h) ((y * 255) / h)
+# define BLU(x, y, w, h) ((x * 255) / w)
+# define RGB(x,y,w,h) ((RED(x,y,w,h) << 16) + (GRN(x,y,w,h) << 8) + BLU(x,y,w,h))
+
+typedef struct	s_fvec
 {
 	t_vect3		*v;
 	int			color;
