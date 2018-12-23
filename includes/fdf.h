@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 18:34:13 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/23 13:49:59 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/23 14:16:40 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,7 @@ t_flist		*ft_flstnew(t_fvec **v);
 void		ft_flstadd_tail(t_flist **alst, t_flist *new);
 
 void		draw_image(t_fdf *info);
+
+void	convert_iso(t_vect3 *v);
 
 #endif

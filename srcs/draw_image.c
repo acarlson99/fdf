@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/21 19:39:33 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/23 13:31:39 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/23 14:16:53 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,17 @@ void		draw_image(t_fdf *info) // TODO: make this draw it properly.  Give it an a
 	t_flist		*ptr;
 	size_t		col;
 
+	ptr = info->vals;
+	while (ptr)
+	{
+		col = 0;
+		while (ptr->v[col])
+		{
+			convert_iso(ptr->v[col]->v);
+			col++;
+		}
+		ptr = ptr->next;
+	}
 	ptr = info->vals;
 	while (ptr)
 	{
