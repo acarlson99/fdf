@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 18:51:51 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/21 22:42:18 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/23 14:01:49 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,7 @@ int				char_tab_to_fvec_tab(t_fvec **new, char *str, size_t row)
 	while (*str)
 	{
 		WHILE_DO(*str == ' ', str++);
-		if (!(ISDIGIT(*str) || *str == '-'))
-			ft_printf("%s\n", str);
-		RET_IF(!(ISDIGIT(*str) || *str == '-'), 1);
+		RET_IF(*str && !(ISDIGIT(*str) || *str == '-'), 1);
 		color = 0xFFFFFF;
 		z = ft_atoi(str);
 		while (ISDIGIT(*str) || *str == '-')
