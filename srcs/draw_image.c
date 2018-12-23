@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/21 19:39:33 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/21 22:46:08 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/23 13:31:39 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void		draw_line_color_gradient(t_fdf *info, t_fvec *v, t_fvec *w)	// TODO: imple
 	draw_line_bresenham(info, v->v, w->v, v->color);
 }
 
-void		draw_image(t_fdf *info)
+void		draw_image(t_fdf *info) // TODO: make this draw it properly.  Give it an angle
 {
 	t_flist		*ptr;
 	size_t		col;

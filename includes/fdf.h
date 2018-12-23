@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 18:34:13 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/21 19:42:08 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/23 13:49:59 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # include <math.h>
 # include "mlx.h"
 # include "libft.h"
-
-#include <stdio.h>	// TODO: sweet god delete this
 
 # define PAR 0
 # define ISO 1
