@@ -1,22 +1,41 @@
 * Links
+
 https://www.scratchapixel.com/
+
 https://www.scratchapixel.com/lessons/3d-basic-rendering/get-started
+
 https://www.scratchapixel.com/lessons/3d-basic-rendering/computing-pixel-coordinates-of-3d-point/mathematics-computing-2d-coordinates-of-3d-points
+
 https://www.scratchapixel.com/lessons/mathematics-physics-for-computer-graphics/lookat-function
+
 https://www.scratchapixel.com/lessons/3d-basic-rendering/rasterization-practical-implementation
+
 https://en.wikipedia.org/wiki/Cross_product
+
 https://en.wikipedia.org/wiki/Dot_product
+
 https://gamedev.stackexchange.com/questions/132579/how-would-you-design-a-transformation-matrix-to-project-absolute-coordinates-to
+
 https://www.programmingsimplified.com/c-program-multiply-matrices
+
 https://en.wikipedia.org/wiki/Line_drawing_algorithm
+
 https://www.geeksforgeeks.org/c-program-multiply-two-matrices/
+
 https://forum.intra.42.fr/topics/19254/messages
 
 * Data progression
+
 Read in data
+
 Make array of vectors
+
 Project 3D image onto 2D canvas
+
 Points are now in screen space
+
 Coords not in the range 0,1 are Normalized Device Coordinates
+
 Normalize coordinates by remaping then to range [0,1]
+
 Convert to raster space by multiplying all NDC coords by image dimension
