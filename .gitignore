@@ -68,6 +68,5 @@ cmake-build-*/
 .vscode/*
 
 # Project
-*fdf
-*.org
+fdf
 *_test
