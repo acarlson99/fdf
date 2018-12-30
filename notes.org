@@ -24,18 +24,3 @@ https://www.geeksforgeeks.org/c-program-multiply-two-matrices/
 
 https://forum.intra.42.fr/topics/19254/messages
 
-* Data progression
-
-Read in data
-
-Make array of vectors
-
-Project 3D image onto 2D canvas
-
-Points are now in screen space
-
-Coords not in the range 0,1 are Normalized Device Coordinates
-
-Normalize coordinates by remaping then to range [0,1]
-
-Convert to raster space by multiplying all NDC coords by image dimension
