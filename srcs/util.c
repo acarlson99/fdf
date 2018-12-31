@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/30 23:50:09 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/30 23:51:43 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/30 23:52:51 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void			convert_iso(t_vect3 *v, t_fdf *info)
 	iso(&v->x, &v->y, v->z, info);
 }
 
-int		ft_other_atoibase(const char *str, int base)
+int				ft_other_atoibase(const char *str, int base)
 {
 	int	n;
 	int	sign;

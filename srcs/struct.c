@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 18:51:18 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/30 23:46:46 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/31 00:13:02 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_fdf	*init_struct(void)
 	info->vals = NULL;
 	info->vals_len = 0;
 	info->rows = 0;
-	info->p_type = 0;
+	info->p_type = 1;
 	return (info);
 }
 
