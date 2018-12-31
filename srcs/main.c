@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 14:10:38 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/23 14:06:49 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/30 23:10:17 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		deal_key(int key, void *param)
 	(void)param;
 	if (key == 53 || key == 12)
 		exit(0);
-	ft_printf("%d\n", key);
+	ft_printf("%d\n", key);	// TODO: remove
 	return (0);
 }
 

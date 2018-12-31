@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 18:51:51 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/30 21:35:57 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/30 23:32:49 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,26 +118,25 @@ int				parse_file(t_fdf *info)
 {
 	t_fvec	**fvec_tab;
 	char	*line;
-	size_t	row;
 	int		n;
 	int		fd;
 
 	fd = open(info->filename, O_RDONLY);
-	row = 0;
 	while ((n = get_next_line(fd, &line)) > 0)
 	{
-		RET_IF(row != 0 && get_len(line) != info->vals_len,\
+		RET_IF(info->rows != 0 && get_len(line) != info->vals_len,\
 				free_line(&line, PARS_ERR));
-		info->vals_len = row == 0 ? get_len(line) : info->vals_len;
+		info->vals_len = info->rows == 0 ? get_len(line) : info->vals_len;
 		RET_IF(!(fvec_tab = (t_fvec **)malloc((info->vals_len + 1)\
 										* sizeof(t_fvec *))), PARS_ERR);
-		RET_IF(char_tab_to_fvec_tab(fvec_tab, line, row, info->mod), PARS_ERR);
+		RET_IF(char_tab_to_fvec_tab(fvec_tab, line, info->rows,\
+									info->mod), PARS_ERR);
 		ft_flstadd_tail(&(info->vals), ft_flstnew(fvec_tab));
 		free(line);
-		row++;
+		info->rows++;
 	}
 	RET_IF(n == -1, FILE_ERR);
-	info->windowwidth = 600;
-	info->windowheight = 600;
+	info->windowwidth = 900;
+	info->windowheight = 800;
 	return (0);
 }

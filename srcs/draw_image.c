@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/21 19:39:33 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/30 21:33:59 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/30 23:15:32 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void		draw_line_color_gradient(t_fdf *info, t_fvec *v, t_fvec *w)	// TODO: imple
 	draw_line_bresenham(info, v->v, w->v, w->color);
 }
 
-void		draw_image(t_fdf *info)
+void		conv(t_fdf *info)
 {
-	t_flist		*ptr;
-	size_t		col;
+	t_flist	*ptr;
+	size_t	col;
 
 	ptr = info->vals;
-	while (ptr && info->p_type == ISO)
+	while (ptr)
 	{
 		col = 0;
 		while (ptr->v[col])
@@ -33,6 +33,15 @@ void		draw_image(t_fdf *info)
 		}
 		ptr = ptr->next;
 	}
+}
+
+void		draw_image(t_fdf *info)
+{
+	t_flist		*ptr;
+	size_t		col;
+
+	if (info->p_type == ISO)
+		conv(info);
 	ptr = info->vals;
 	while (ptr)
 	{
