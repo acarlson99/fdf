@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 18:34:13 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/23 14:16:40 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/30 21:36:12 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,9 @@ typedef struct	s_fdf
 	void			*win_ptr;
 	size_t			windowwidth;
 	size_t			windowheight;
+	double			mod;
+	double			off_x;
+	double			off_y;
 	char			*exec_name;
 	char			*filename;
 	t_flist			*vals;
@@ -88,6 +91,6 @@ void		ft_flstadd_tail(t_flist **alst, t_flist *new);
 
 void		draw_image(t_fdf *info);
 
-void	convert_iso(t_vect3 *v);
+void	convert_iso(t_vect3 *v, t_fdf *info);
 
 #endif

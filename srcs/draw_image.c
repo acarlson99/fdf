@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/21 19:39:33 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/30 16:35:08 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/30 21:33:59 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void		draw_image(t_fdf *info)
 		col = 0;
 		while (ptr->v[col])
 		{
-			convert_iso(ptr->v[col]->v);
+			convert_iso(ptr->v[col]->v, info);
 			col++;
 		}
 		ptr = ptr->next;

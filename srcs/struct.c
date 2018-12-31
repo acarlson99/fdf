@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 18:51:18 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/21 22:45:18 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/30 21:53:15 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ t_fdf	*init_struct(void)
 	info->win_ptr = NULL;
 	info->windowwidth = 0;
 	info->windowheight = 0;
+	info->mod = 17;	// TODO: Figure out the modification needed
+	info->off_x = 50;	// TODO: Find proper offset
+	info->off_y = 50;	// TODO: Find proper offset
 	info->exec_name = NULL;
 	info->filename = NULL;
 	info->vals = NULL;

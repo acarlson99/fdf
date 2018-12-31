@@ -6,26 +6,26 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 18:51:51 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/30 21:15:53 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/30 21:35:57 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	iso(double *x, double *y, int z)
+void	iso(double *x, double *y, int z, t_fdf *info)
 {
 	int		prev_x;
 	int		prev_y;
 
 	prev_x = *x;
 	prev_y = *y;
-	*x = 200 + (prev_x - prev_y) * cos(0.523599);
-	*y = -z + (prev_x + prev_y) * sin(0.523599);
+	*x = info->off_x + (prev_x - prev_y) * cos(0.523599);
+	*y = info->off_y + -z + (prev_x + prev_y) * sin(0.523599);
 }
 
-void	convert_iso(t_vect3 *v)
+void	convert_iso(t_vect3 *v, t_fdf *info)
 {
-	iso(&v->x, &v->y, v->z);
+	iso(&v->x, &v->y, v->z, info);
 }
 
 static int		ft_other_atoibase(const char *str, int base)
@@ -73,17 +73,18 @@ size_t			get_len(char *str)
 	return (len);
 }
 
-#define DC (double)col * 10
-#define DR (double)row * 10
-#define DZ (double)z * 10
+#define DC (double)col
+#define DR (double)row
+#define DZ (double)z
 
-int				char_tab_to_fvec_tab(t_fvec **new, char *str, size_t row)
+int				char_tab_to_fvec_tab(t_fvec **new, char *str, size_t row,
+										double mod)
 {
 	size_t		col;
 	int			color;
 	double		z;
 
-	RET_IF(!new, 1);
+	RET_IF(!new || !str, 1);
 	col = 0;
 	while (*str)
 	{
@@ -100,7 +101,7 @@ int				char_tab_to_fvec_tab(t_fvec **new, char *str, size_t row)
 			color = ft_other_atoibase(str, 16) - 0xA;
 			WHILE_DO(ISDIGIT(*str) || (*str >= 'A' && *str <= 'F'), str++);
 		}
-		new[col] = fvec_new(ft_vectnew(DC, DR, DZ), color);
+		new[col] = fvec_new(ft_vectnew(DC * mod, DR * mod, DZ * mod), color);
 		col++;
 	}
 	new[col] = NULL;
@@ -130,7 +131,7 @@ int				parse_file(t_fdf *info)
 		info->vals_len = row == 0 ? get_len(line) : info->vals_len;
 		RET_IF(!(fvec_tab = (t_fvec **)malloc((info->vals_len + 1)\
 										* sizeof(t_fvec *))), PARS_ERR);
-		RET_IF(char_tab_to_fvec_tab(fvec_tab, line, row), PARS_ERR);
+		RET_IF(char_tab_to_fvec_tab(fvec_tab, line, row, info->mod), PARS_ERR);
 		ft_flstadd_tail(&(info->vals), ft_flstnew(fvec_tab));
 		free(line);
 		row++;
