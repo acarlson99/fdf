@@ -6,7 +6,7 @@
 #    By: acarlson <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/15 14:08:57 by acarlson          #+#    #+#              #
-#    Updated: 2018/12/30 21:15:08 by acarlson         ###   ########.fr        #
+#    Updated: 2018/12/30 22:55:09 by acarlson         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -94,3 +94,4 @@ fsan:
 	$(CC) $(DFLAGS) $(INCLUDES) $(FRAMEWORKS) $(LIBS) $(addprefix $(SRCS), $(CFILES)) -o $(DNAME) -fsanitize=address
 
 k: dclean fclean
+	rm -rf *.dSYM
