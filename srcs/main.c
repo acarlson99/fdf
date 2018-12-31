@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 14:10:38 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/30 23:10:17 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/30 23:43:31 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ohfuck(t_fdf *info, int code)
 	if (code == 1)
 	{
 		if (info)
-			ft_printf("usage: %s <file> [{bold}p{nc}arallel {bold}i{nc}so]\n", info->exec_name);
+			ft_printf("usage: %s <file> [{bold}p{nc}arallel {bold}i{nc}so] [modify_projection_size]\n", info->exec_name);
 	}
 	else if (code == 2)
 		ft_printf("file read error\n");
