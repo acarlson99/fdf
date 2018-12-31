@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 16:13:51 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/19 15:39:11 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/30 22:06:51 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -355,6 +355,5 @@ t_vect3			*ft_vectnew(double x, double y, double z);
 t_vect3			*ft_vectadd(t_vect3 *v, t_vect3 *w);
 t_vect3			*ft_vectsubtract(t_vect3 *v, t_vect3 *w);
 t_vect3			*ft_vectscalarmult(double n, t_vect3 *v);
-t_vect3			*ft_vectmtxmult(t_vect3 *v, t_mtx4 mat);
 
 #endif
