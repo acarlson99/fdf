@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/30 23:50:09 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/30 23:52:51 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/31 15:48:25 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int				ft_other_atoibase(const char *str, int base)
 	{
 		if (*str >= '0' && *str <= (MIN('0' + base - 1, '9')))
 			n = n * base + *str - '0';
-		else if (*str >= 'A' && *str <= ('A' + base - 11))
-			n = n * base + *str - 'A' + 10;
+		else if (TOUPPER(*str) >= 'A' && TOUPPER(*str) <= ('A' + base - 11))
+			n = n * base + TOUPPER(*str) - 'A' + 10;
 		else
 			break ;
 		str++;

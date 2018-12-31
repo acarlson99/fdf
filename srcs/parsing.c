@@ -6,11 +6,13 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 18:51:51 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/30 23:55:16 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/31 15:39:30 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+#define ISVAL(c) (ISDIGIT(c) || (TOLOWER(c) >= 'a' && TOLOWER(c) <= 'f'))
 
 #define DC (double)col
 #define DR (double)row
@@ -37,7 +39,7 @@ int				char_tab_to_fvec_tab(t_fvec **new, char *str, size_t row,
 			RET_IF(*(str + 1) != '0' || *(str + 2) != 'x', PARS_ERR);
 			ELSE_DO(str += 3);
 			color = ft_other_atoibase(str, 16) - 0xA;
-			WHILE_DO(ISDIGIT(*str) || (*str >= 'A' && *str <= 'F'), str++);
+			WHILE_DO(ISVAL(*str), str++);
 		}
 		new[col] = fvec_new(ft_vectnew(DC * mod, DR * mod, DZ * mod), color);
 		col++;
