@@ -6,72 +6,11 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 18:51:51 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/30 23:32:49 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/30 23:50:24 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-void	iso(double *x, double *y, int z, t_fdf *info)
-{
-	int		prev_x;
-	int		prev_y;
-
-	prev_x = *x;
-	prev_y = *y;
-	*x = info->off_x + (prev_x - prev_y) * cos(0.523599);
-	*y = info->off_y + -z + (prev_x + prev_y) * sin(0.523599);
-}
-
-void	convert_iso(t_vect3 *v, t_fdf *info)
-{
-	iso(&v->x, &v->y, v->z, info);
-}
-
-static int		ft_other_atoibase(const char *str, int base)
-{
-	int	n;
-	int	sign;
-
-	n = 0;
-	sign = 1;
-	while ((*str >= 9 && *str <= 13) || *str == 32)
-		str++;
-	if (*str == '+' || *str == '-')
-	{
-		if (*str == '-')
-			sign = -1;
-		str++;
-	}
-	while (*str)
-	{
-		if (*str >= '0' && *str <= (MIN('0' + base - 1, '9')))
-			n = n * base + *str - '0';
-		else if (*str >= 'A' && *str <= ('A' + base - 11))
-			n = n * base + *str - 'A' + 10;
-		else
-			break ;
-		str++;
-	}
-	return (n * sign);
-}
-
-size_t			get_len(char *str)
-{
-	size_t		len;
-
-	len = 0;
-	while (*str)
-	{
-		while (ISWHITE(*str))
-			str++;
-		if (*str)
-			len++;
-		while (*str && !ISWHITE(*str))
-			str++;
-	}
-	return (len);
-}
 
 #define DC (double)col
 #define DR (double)row
@@ -108,7 +47,7 @@ int				char_tab_to_fvec_tab(t_fvec **new, char *str, size_t row,
 	return (0);
 }
 
-int				free_line(char **line, int code)
+static int		free_line(char **line, int code)
 {
 	free(*line);
 	return (code);

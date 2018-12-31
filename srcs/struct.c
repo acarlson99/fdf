@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/17 18:51:18 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/30 23:41:50 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/30 23:46:46 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,6 @@ int		fill_struct(t_fdf *info, int argc, char **argv)
 	info->off_y = (info->windowheight / 3);
 	RET_IF(!(info->mlx_ptr = mlx_init()), MLX_ERR);
 	RET_IF(!(info->win_ptr = mlx_new_window(info->mlx_ptr, info->windowwidth,\
-			info->windowheight, ft_strrchr(info->exec_name, '/') + 1)), WIN_ERR);
+		info->windowheight, ft_strrchr(info->exec_name, '/') + 1)), WIN_ERR);
 	return (0);
 }

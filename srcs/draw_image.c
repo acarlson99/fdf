@@ -6,13 +6,13 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/21 19:39:33 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/30 23:15:32 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/30 23:45:27 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void		draw_line_color_gradient(t_fdf *info, t_fvec *v, t_fvec *w)	// TODO: implement
+void		draw_line_color_gradient(t_fdf *info, t_fvec *v, t_fvec *w)	// TODO: implement color gradient
 {
 	draw_line_bresenham(info, v->v, w->v, w->color);
 }

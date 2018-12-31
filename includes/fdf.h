@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/15 18:34:13 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/30 23:16:21 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/30 23:51:46 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,8 @@ void			ft_flstadd_tail(t_flist **alst, t_flist *new);
 void			draw_image(t_fdf *info);
 
 void			convert_iso(t_vect3 *v, t_fdf *info);
+
+int				ft_other_atoibase(const char *str, int base);
+size_t			get_len(char *str);
 
 #endif
