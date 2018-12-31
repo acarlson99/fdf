@@ -6,7 +6,7 @@
 /*   By: acarlson <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 15:01:26 by acarlson          #+#    #+#             */
-/*   Updated: 2018/12/21 22:06:47 by acarlson         ###   ########.fr       */
+/*   Updated: 2018/12/30 21:13:29 by acarlson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ void			draw_line_bresenham(t_fdf *info, t_vect3 *v, t_vect3 *w,\
 	RET_NONE(!info || !info->mlx_ptr || !info->win_ptr || !v || !w);
 	d_x = w->x - v->x;
 	d_y = w->y - v->y;
-	if (v->x < w->x && d_x >= d_y)
+	if (v->x < w->x && d_x >= fabs(d_y))
 		h_line_draw(info, v, w, color);
-	else if (v->y < w->y && d_y >= d_x)
+	else if (v->y < w->y && d_y >= fabs(d_x))
 		v_line_draw(info, v, w, color);
 	else if (v->y == w->y && v->x == w->x)
 		mlx_pixel_put(info->mlx_ptr, info->win_ptr, v->x, v->y, color);

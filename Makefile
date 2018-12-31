@@ -6,7 +6,7 @@
 #    By: acarlson <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/15 14:08:57 by acarlson          #+#    #+#              #
-#    Updated: 2018/12/23 13:56:21 by acarlson         ###   ########.fr        #
+#    Updated: 2018/12/30 21:15:08 by acarlson         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -93,4 +93,4 @@ fsan:
 	make -C minilibx_macos/
 	$(CC) $(DFLAGS) $(INCLUDES) $(FRAMEWORKS) $(LIBS) $(addprefix $(SRCS), $(CFILES)) -o $(DNAME) -fsanitize=address
 
-killall: dclean fclean
+k: dclean fclean
