@@ -6,7 +6,7 @@
 #    By: acarlson <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/11 14:45:59 by acarlson          #+#    #+#              #
-#    Updated: 2018/12/21 17:11:56 by acarlson         ###   ########.fr        #
+#    Updated: 2018/12/30 22:07:31 by acarlson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,8 +39,7 @@ FILES = ft_memset ft_bzero ft_memcpy ft_memccpy ft_memmove ft_memchr ft_memcmp \
 		ft_putstr_fd_2 ft_putnstr ft_putnstr_fd ft_putcstr_fd ft_atosize_tbase \
 		ft_size_ttoabase ft_ssize_ttoabase ft_wcharlen ft_putwchar_fd          \
 		ft_wstrlen ft_putwstr ft_putnwstr ft_putrstr_fd ft_strrealloc ft_exit  \
-		ft_numpair ft_numunpair ft_vectnew ft_vectadd ft_vectscalarmult        \
-		ft_vectmtxmult
+		ft_numpair ft_numunpair ft_vectnew ft_vectadd ft_vectscalarmult
 FILES += ft_printf pf_disp pf_print_str_char pf_print_int pf_print_unsigned    \
 		pf_print_oct pf_print_hex pf_print_pointer pf_print_percent            \
 		pf_print_padding pf_parse_input pf_find_options pf_print_bin           \
